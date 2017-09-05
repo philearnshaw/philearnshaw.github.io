@@ -1,0 +1,139 @@
+p {
+	color: #3A474B;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 17px;
+	line-height: 1.8em;
+}
+
+[data-id] {
+	border-bottom: 2px solid;
+	cursor: pointer;
+	position: relative;
+}
+
+[data-target] {
+	display: inline-block;
+	height: 0;
+	margin-left: -5px;
+	overflow: hidden;
+	width: 0;
+}
+
+[data-id]:hover {
+	/*color: #49575C;*/
+	color: #537885;
+	/*color: #213fd5; original hover*/
+}
+
+.show {
+	display: inline;
+	margin-left: initial;
+}
+
+.no-space {
+	margin-left: -5px;
+}
+
+[data-modal] {
+	bottom: 0;
+	cursor: pointer;
+	display: none;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+[data-modal].showing {
+	display: block;
+}
+
+[data-modal] > * {
+	left: 50%;
+	max-width: 100%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+[data-modal-id] {
+	border-bottom: 2px solid;
+	color: #3A474B;
+	cursor: pointer;
+}
+
+[data-modal-id]:hover {
+	color: #fa3b00;
+	/*color: #213fd5;*/
+
+}
+
+#container {
+	margin: 100px auto;
+	max-width: 350px;
+	width: 90%;
+}
+
+.revealed {
+	border: none;
+	cursor: default;
+}
+
+.revealed:hover {
+	color: #3A474B;
+}
+
+a {
+	border-bottom: 2px solid;
+	color: #3A474B;
+	text-decoration: none;
+}
+
+a:hover {
+	/*color: #21d55d;*/
+	color: #213fd5;
+}
+
+a::after {
+	content: "\f14c";
+}
+
+[data-modal-id]::after {
+	content: "\f062";
+}
+
+a::after, [data-modal-id]::after {
+	font-family: FontAwesome;
+	font-size: 11px;
+	margin-left: 3px;
+	vertical-align: super;
+}
+
+#help {
+	color: #C2C5C7;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 11px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+[data-modal].showing > :first-child, [data-modal].cycle-over > :last-child {
+	visibility: visible;
+}
+
+[data-modal].cycling > :first-child, [data-modal].cycle-over > :first-child {
+	visibility: hidden;
+}
+
+[data-modal] > * {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	visibility: hidden;
+}
