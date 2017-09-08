@@ -7,7 +7,7 @@ var
 	, b = d.body
 	, modal_timeout
 	, collage_time = 500
-	;
+;
 
 
 function escapeRegExp(str) {
@@ -68,9 +68,11 @@ function click_handler(e) {
 
 function hide_modals() {
 	b.removeClass('showing-modal');
-	d.querySelectorAll('[data-modal].showing').forEach(function(e) {
-		e.removeClass('showing');
+	d.querySelectorAll('[data-modal].showing').forEach(function (e) {
+		hide_modal(e);
 	});
+
+	clearTimeout(modal_timeout);
 }
 
 function show_modal(e) {
@@ -81,7 +83,8 @@ function show_modal(e) {
 	;
 
 	// Show modal
-	$modal.addClass('showing').removeClass('cycling').removeClass('cycle-over');;
+	$modal.addClass('showing').removeClass('cycling').removeClass('cycle-over');
+	;
 
 	// Is this a multi-modal?
 	if ($kids.length > 1) {
@@ -92,9 +95,9 @@ function show_modal(e) {
 function cycle_modal($modal, $kids, i) {
 
 	clearTimeout(modal_timeout);
-	modal_timeout = setTimeout(function() {
+	modal_timeout = setTimeout(function () {
 		$modal.addClass('cycling');
-		
+
 		if (!i) {
 			$modal.removeClass('cycle-over');
 		}
@@ -116,4 +119,18 @@ function cycle_modal($modal, $kids, i) {
 		}
 	}, collage_time);
 
+}
+
+function hide_modal($modal) {
+	var
+		i = 0
+	;
+
+	$modal.removeClass('showing').removeClass('cycling');
+
+	for (; i < $modal.children.length; ++i) {
+		if ($modal.children[i].parentNode === $modal) {
+			$modal.children[i].style.visibility = '';
+		}
+	}
 }
